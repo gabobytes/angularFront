@@ -1,0 +1,34 @@
+<div class="card">
+    <div class="card-header">
+        
+        <a class="btn btn-success" [routerLink]="['/add-product']">Registrar Producto</a>
+    </div>
+    <div class="card-body">
+        <h1>Productos</h1>
+        <table class="table">
+            <thead>
+                <tr >
+                    <th>Id</th>
+                    <th>Producto</th>
+                    <th>Valor</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products let iControl=index">
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.productname }}</td>
+                    <td>{{ product.value }}</td>
+                    <td><a class="btn btn-info"  routerLink="/edit-product/{{ product.id }}" >Editar</a>    |  
+                    <a  class="btn btn-danger" (click)="deleteProduct(product.id,iControl)" role="button">Eliminar</a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        
+    </div>
+
+</div>
+
+

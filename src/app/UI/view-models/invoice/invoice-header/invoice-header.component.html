@@ -1,0 +1,101 @@
+<form [formGroup]="formGroup" class="example-form" (ngSubmit)='saveInvoice()'>
+<div class="card">
+    <div class="card-header">
+        Registrar Venta
+    </div>
+    <div class="card-body">     
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Documento cliente</mat-label>
+            <input formControlName="client" 
+                   placeholder="Seleccione uno"
+                   aria-label="Documento"
+                   matInput  type="text"                     
+                   [matAutocomplete]="auto"
+                   class="form-control"     
+                   >
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayClient">
+              <mat-option  *ngFor="let clientlist of filteredOptions " [value]="clientlist">
+                {{ clientlist.document }} 
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-12">
+            <label  for="exampleFormControlInput1" class="form-label">Documento</label>
+            <input readonly formControlName="document" type="text" class="form-control" id="exampleFormControlInput1" >
+          </div>
+          <div class="mb-12">
+            <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+            <input readonly formControlName="fullname" type="text" class="form-control" id="exampleFormControlInput1" >
+          </div>
+          <div class="mb-12">
+            <label for="exampleFormControlInput1" class="form-label">Teléfono</label>
+            <input readonly formControlName="phone" type="text" class="form-control" id="exampleFormControlInput1" >
+          </div>    
+        </div>
+      </div>          
+    </div>      
+</div>
+
+
+<div class="card-body">     
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Producto</mat-label>
+    <input formControlName="product" 
+           placeholder="Escoja uno"
+           aria-label="Producto"
+           matInput  type="text"           
+           [matAutocomplete]="auto2"
+           class="form-control"
+           >
+    <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayProduct">
+      <mat-option  *ngFor="let productitem of filteredProduct" [value]="productitem"  >
+        {{ productitem.productname }} 
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+</div>
+
+
+
+
+
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Producto</th>
+      <th scope="col">Valor Unitario</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Total</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let product of dtoInvoiceRegister.ProductsInvoice let iControl=index">
+      <td>{{ product.productname }}</td>
+      <td>{{ product.value }}</td>
+      <td><input required type="text" value="{{ product.quantity }}" (keyup)="calculateTotalByItem($event.target)"  [(ngModel)]="product.quantity" class="form-control" name=""  id="" aria-describedby="helpId"></td>
+      <td>
+        <input value="{{product.total}}" readonly type="text" class="form-control" name=""  id="" aria-describedby="helpId">
+     </td>
+     <td>
+      <a  class="btn btn-danger" (click)="deleteProduct(product.total,iControl)" role="button">Eliminar</a>
+     </td>
+    </tr>   
+  </tbody>
+</table>
+
+<div>
+<p>Total de la Factura: {{ totalByInvoice }}</p>
+</div>
+<!-- {{ dtoInvoiceRegister | json }}-->
+
+<div class="btn-group" role="group" aria-label="">
+  <button type="submit" class="btn btn-success"  (click)="saveInvoice()">Registrar</button>  
+</div>

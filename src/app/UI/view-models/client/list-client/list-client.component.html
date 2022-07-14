@@ -1,0 +1,37 @@
+<div class="card">
+    <div class="card-header">
+        
+        <a class="btn btn-success" [routerLink]="['/add-client']">Registrar Cliente</a>
+    </div>
+    <div class="card-body">
+        <h1>Clientes</h1>
+        <table class="table">
+            <thead>
+                <tr >
+                    <th>Id</th>
+                    <th>Documento</th>
+                    <th>Primer Nombre</th>
+                    <th>Primer Apellido</th>
+                    <th>Teléfono</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let client of Clients let iControl=index">
+                    <td>{{ client.id }}</td>
+                    <td>{{ client.document }}</td>
+                    <td>{{ client.firstname }}</td>
+                    <td>{{ client.lastname }}</td>
+                    <td>{{ client.phone }}</td>
+                    <td><a class="btn btn-info"  routerLink="/edit-client/{{ client.id }}" >Editar</a>    |  
+                    <a  class="btn btn-danger" (click)="deleteClient(client.id,iControl)" role="button">Eliminar</a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        
+    </div>
+
+</div>
+
+
