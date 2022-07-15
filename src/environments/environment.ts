@@ -7,8 +7,12 @@ export const environment = {
   baseUrl:'http://localhost:1451/api/',
   urlProducts: 'product/',
   urlClients: 'client/',
-  urlInvoices: 'invoice/'
+  urlInvoices: 'invoice/',
+  savedMessage : "Cambios Guardados",
+  deleteMessage : "Registro Eliminado"
 };
+
+
 
 /*
  * For easier debugging in development mode, you can import the following file

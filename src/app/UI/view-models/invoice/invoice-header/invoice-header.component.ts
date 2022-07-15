@@ -6,6 +6,8 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { InvoiceRegister } from 'src/app/Domain/Models/Invoice/InvoiceRegister';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-invoice-header',
@@ -26,6 +28,11 @@ export class InvoiceHeaderComponent implements OnInit {
 
   totalByItem:number;
   totalByInvoice:number = 0;
+  
+  showMsgSucces :boolean = false;
+  msgDisplaySaved = environment.savedMessage;
+  msgDisplayDeleted = environment.deleteMessage;
+  showForm = true;
 
   constructor(private _getClientUseCase:ClientUseCases, 
     private _getProductUseCase:ProductUseCases,
@@ -149,12 +156,11 @@ export class InvoiceHeaderComponent implements OnInit {
   saveInvoice():any{
     this._getInvoiceUseCase.saveNew(this.dtoInvoiceRegister)   
     .subscribe({
-        next: (result: any) => {
-
-        }
+        next: (result: any) => {          
+          this.showMsgSucces = true;
+          this.showForm = false;
+        }        
       });
-   
-
   }
 
 

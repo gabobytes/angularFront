@@ -40,10 +40,8 @@ export class EditProductComponent implements OnInit {
   }
 
   updateProduct():any{
-    console.log(this.id, " ", this.formProduct.value);
-
     this.response$ = this._getProductUseCase.updateProduct(this.formProduct.value ,this.id).subscribe(()=>{
-      this._routering.navigateByUrl('list-product');
+      this._routering.navigateByUrl('list-product?msg=ok');
     });
   }
 

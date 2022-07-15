@@ -5,13 +5,13 @@
                 <a class="nav-link" href="#">App <span class="visually-hidden">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="list-product" href="#">Productos</a>
+                <a class="nav-link" routerLink="list-product" [queryParams]="{ msg: '' }" href="#">Productos</a>
             </li>        
             <li class="nav-item">
-                <a class="nav-link" routerLink="list-client" href="#">Clientes</a>
+                <a class="nav-link" routerLink="list-client" [queryParams]="{msg: ''}" href="#">Clientes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="add-invoice" href="#">Venta</a>
+                <a class="nav-link" routerLink="add-invoice" [queryParams]="{msg: ''}" href="#">Venta</a>
             </li>            
         
         </ul>

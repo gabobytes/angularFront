@@ -28,7 +28,7 @@ export class AddClientComponent implements OnInit {
   saveNew():any{
     this.response$ = this._getClientUseCase.saveNew(this.formClient.value).subscribe(
       res=>{
-        this._routering.navigateByUrl('list-client');
+        this._routering.navigateByUrl('list-client?msg=ok');
       }
     )
   }

@@ -3,7 +3,14 @@
     <div class="card-header">
         Registrar Venta
     </div>
-    <div class="card-body">     
+
+    <div class="card-header" *ngIf="showMsgSucces == true">
+      <div class="alert alert-success">
+          {{ msgDisplaySaved }}
+      </div>
+  </div>    
+
+    <div class="card-body" *ngIf="showForm == true">     
       <div class="row">
         <div class="col-md-6">
           <mat-form-field class="example-full-width" appearance="fill">
@@ -41,7 +48,7 @@
 </div>
 
 
-<div class="card-body">     
+<div class="card-body"  *ngIf="showForm == true">     
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Producto</mat-label>
     <input formControlName="product" 
@@ -66,7 +73,7 @@
 
 </form>
 
-<table class="table">
+<table class="table"  *ngIf="showForm == true">
   <thead>
     <tr>
       <th scope="col">Producto</th>
@@ -91,11 +98,11 @@
   </tbody>
 </table>
 
-<div>
+<div  *ngIf="showForm == true">
 <p>Total de la Factura: {{ totalByInvoice }}</p>
 </div>
 <!-- {{ dtoInvoiceRegister | json }}-->
 
-<div class="btn-group" role="group" aria-label="">
+<div class="btn-group" role="group" aria-label=""  *ngIf="showForm == true">
   <button type="submit" class="btn btn-success"  (click)="saveInvoice()">Registrar</button>  
 </div>

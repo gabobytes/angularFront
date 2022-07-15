@@ -1,8 +1,14 @@
 <div class="card">
-    <div class="card-header">
-        
+    <div class="card-header">        
         <a class="btn btn-success" [routerLink]="['/add-product']">Registrar Producto</a>
     </div>
+
+    <div class="card-header" *ngIf="showMsgSucces == true">
+        <div class="alert alert-success">
+            {{ msgDisplaySaved }}
+        </div>
+    </div>
+
     <div class="card-body">
         <h1>Productos</h1>
         <table class="table">

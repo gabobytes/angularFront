@@ -42,14 +42,10 @@ export class EditClientComponent implements OnInit {
   }
 
     updateClient():any{
-
       this.response$ = this._getClientUseCase.updateClient(this.id,this.formClient.value).subscribe(()=>{
-        this._routering.navigateByUrl('list-client');
+        this._routering.navigateByUrl('list-client?msg=ok');
       });
     }
-
-  
-
   }
 
 

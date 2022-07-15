@@ -32,7 +32,7 @@ export class AddProductComponent implements OnInit {
   saveNew():any{
    this.response$ = this._getProductUseCase.saveNew(this.formProduct.value).subscribe(
      res=>{
-      this._routering.navigateByUrl('list-product');
+      this._routering.navigateByUrl('list-product?msg=ok');
      }
    );
   }
